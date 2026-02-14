@@ -38,7 +38,18 @@ Create a new notebook and name it `m2-03-data-formats-execution-engines-lab.ipyn
 
 ### Task 1: Parquet Internals and Metadata Inspection
 
-**Step 1:** Create a dataset with 500,000 rows and at least 8 columns: a mix of integers, floats, strings, booleans, and timestamps. Use `np.random.seed(42)` for reproducibility.
+**Step 1:** Create a dataset with 500,000 rows using the following schema (you will reuse this dataset throughout the lab). Use `np.random.seed(42)` for reproducibility.
+
+| Column | Type | Description |
+|---|---|---|
+| `user_id` | int | Unique user identifier (1 to 500,000) |
+| `city` | string | One of 10 city names (e.g., "Berlin", "Tokyo", "New York", etc.) |
+| `score` | float | Random score between 0 and 100 |
+| `active` | bool | Whether the user is active |
+| `signup_date` | timestamp | Random date within the last 3 years |
+| `age` | int | Random age between 18 and 80 |
+| `sessions` | int | Number of sessions (random, 0 to 500) |
+| `revenue` | float | Revenue in dollars (random, 0 to 1000) |
 
 **Step 2:** Save the dataset as a Parquet file. Then use `pyarrow.parquet.ParquetFile` to inspect:
 - The number of row groups
